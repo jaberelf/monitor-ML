@@ -27,7 +27,7 @@ services:
     labels:
         org.label-schema.group: "monitoring"
         
-nodeexporter:
+  nodeexporter:
     image: prom/node-exporter:v0.15.2
     container_name: nodeexporter
     user: root
@@ -48,7 +48,7 @@ nodeexporter:
     labels:
         org.label-schema.group: "monitoring"
 
-grafana:
+  grafana:
     image: grafana/grafana:4.6.3
     container_name: grafana
     volumes:
