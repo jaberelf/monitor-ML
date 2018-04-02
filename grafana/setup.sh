@@ -33,6 +33,7 @@ wait_for_api() {
   while ! grafana_api GET /api/user/preferences
   do
     sleep 5
+    echo "promblem here"
   done 
 }
 
