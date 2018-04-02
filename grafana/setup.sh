@@ -7,7 +7,7 @@
 # Image: grafana/grafana:4.1.2
 # ENTRYPOINT [\"/run.sh\"]"
 
-GRAFANA_URL=${GRAFANA_URL:-http://localhost:3000}
+GRAFANA_URL=${GRAFANA_URL:-http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000}
 #GRAFANA_URL=http://grafana-plain.k8s.playground1.aws.ad.zopa.com
 DATASOURCES_PATH=${DATASOURCES_PATH:-/etc/grafana/datasources}
 DASHBOARDS_PATH=${DASHBOARDS_PATH:-/etc/grafana/dashboards}
