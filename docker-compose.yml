@@ -98,7 +98,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_PASSWORD: postgres
       PGDATA: /data/postgres
     volumes:
        - /data/postgres:/data/postgres
