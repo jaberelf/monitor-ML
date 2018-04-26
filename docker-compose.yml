@@ -96,4 +96,8 @@ services:
       
   postgres-pgadmin:
     image: wnameless/postgresql-phppgadmin
+    ports:
+      - "49060:22"
+      - "49061:80"
+      - "49062:5432"
     
