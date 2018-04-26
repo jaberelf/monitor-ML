@@ -94,35 +94,6 @@ services:
     labels:
       org.label-schema.group: "monitoring" 
       
-  postgres:
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      PGDATA: /data/postgres
-    volumes:
-       - /data/postgres:/data/postgres
-    ports:
-      - "5432:5432"
-    networks:
-      - postgres
-    restart: unless-stopped
-  
-  pgadmin:
-    links:
-      - postgres:postgres
-    image: fenglc/pgadmin4
-    environment:
-      PGADMIN_SETUP_EMAIL : m.jaber@dialy.net
-      PGADMIN_SETUP_PASSWORD : jaber_700
-    volumes:
-       - /data/pgadmin:/root/.pgadmin
-    ports:
-      - "5050:5050"
-    networks:
-      - postgres
-    restart: unless-stopped
-    depends_on:
-      - postgres
-
-  
+  postgres-pgadmin:
+    image: wnameless/postgresql-phppgadmin
+    
