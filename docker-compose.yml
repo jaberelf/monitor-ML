@@ -94,10 +94,14 @@ services:
     labels:
       org.label-schema.group: "monitoring" 
       
-  postgres-pgadmin:
-    image: wnameless/postgresql-phppgadmin
-    ports:
-      - "49060:22"
-      - "49061:80"
-      - "49062:5432"
+  #postgres-pgadmin:
+  #  image: wnameless/postgresql-phppgadmin
+  #  ports:
+  #    - "49060:22"
+   #   - "49061:80"
+    #  - "49062:5432"
+   pg-prometheus:
+     image: timescale/pg_prometheus
+     ports:
+       - "5432:5432"
     
