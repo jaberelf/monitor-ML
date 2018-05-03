@@ -100,15 +100,15 @@ services:
   #    - "49060:22"
    #   - "49061:80"
     #  - "49062:5432"
-  pg_prometheus:
-    image: timescale/pg_prometheus
-    ports:
-      - "5432:5432"
+  #pg_prometheus:
+   # image: timescale/pg_prometheus
+    #ports:
+      #- "5432:5432"
   
-  prom-post-adapter:
-    image: timescale/prometheus-postgresql-adapter
-    ports:
-      - "9201:9201"
-    links:
-      - pg_prometheus
+  #prom-post-adapter:
+   # image: timescale/prometheus-postgresql-adapter
+    #ports:
+     # - "9201:9201"
+    #links:
+     # - pg_prometheus
     
