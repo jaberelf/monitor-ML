@@ -87,7 +87,7 @@ services:
     container_name: "portainer-app"
     command: --templates http://templates/templates.json 
     networks:
-      - local
+      - monitor-net
     restart: unless-stopped
     ports:
       - "9000:9000"
@@ -98,7 +98,7 @@ services:
   jupyter-notebook:
     image: jupyter/datascience-notebook
     networks:
-      - local
+      - monitor-net
     restart: unless-stopped
     ports:
       - "8888:8888"
