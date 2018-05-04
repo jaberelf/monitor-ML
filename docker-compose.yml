@@ -37,7 +37,6 @@ services:
   nodeexporter:
     image: prom/node-exporter:v0.15.2
     container_name: nodeexporter
-    user: root
     privileged: true
     volumes:
       - /proc:/host/proc:ro
@@ -54,6 +53,24 @@ services:
       - monitor-net
     labels:
         org.label-schema.group: "monitoring"
+        
+  postgresexporter:
+    image: wrouesnel/postgres_exporter
+    container_name: postgresexporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    networks:
+      - monitor-net
+    
+    
 
   grafana:
     image: grafana/grafana:4.6.3
@@ -64,10 +81,6 @@ services:
       - ./grafana/dashboards:/etc/grafana/dashboards
       - ./grafana/setup.sh:/setup.sh
     entrypoint: /setup.sh
-    environment:
-      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
-      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-      - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -115,12 +128,12 @@ services:
     #labels:
      # org.label-schema.group: "monitoring" 
       
-  #postgres-pgadmin:
-  #  image: wnameless/postgresql-phppgadmin
-  #  ports:
-  #    - "49060:22"
-   #   - "49061:80"
-    #  - "49062:5432"
+  postgres-pgadmin:
+    image: wnameless/postgresql-phppgadmin
+    ports:
+      - "49060:22"
+      - "49061:80"
+      - "49062:5432"
   #pg_prometheus:
    # image: timescale/pg_prometheus
     #ports:
