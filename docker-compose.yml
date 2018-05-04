@@ -59,7 +59,7 @@ services:
     container_name: postgresexporter
     restart: unless-stopped
     ports:
-      - "9187":"9187"
+      - "9187:9187"
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
