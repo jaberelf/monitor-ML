@@ -64,7 +64,7 @@ services:
     networks:
       - monitor-net
     depends_on:
-      - db
+      - postgres-pgadmin
     command: "-extend.query-path=/queries.yaml"
     environment:
       - DATA_SOURCE_NAME= "postgresql://postgres:postgres@172.19.0.2:5432/postgres"
