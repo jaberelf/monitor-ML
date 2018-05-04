@@ -81,7 +81,28 @@ services:
       - monitor-net
     labels:
         org.label-schema.group: "monitoring"
-   
+    
+  portainer:
+    image: portainer/portainer
+    container_name: "portainer-app"
+    command: --templates http://templates/templates.json 
+    networks:
+      - local
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer/data:/data
+  
+  jupyter-notebook:
+    image: jupyter/datascience-notebook
+    networks:
+      - local
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+
   #caddy:
    # image: stefanprodan/caddy
     #container_name: caddy
