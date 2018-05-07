@@ -59,7 +59,7 @@ services:
     container_name: postgresexporter
     restart: unless-stopped
     ports:
-      - "9187:9187"
+      - "9200:9200"
     restart: unless-stopped
     networks:
       - monitor-net
