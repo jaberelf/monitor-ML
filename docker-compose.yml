@@ -67,7 +67,7 @@ services:
       - postgres-pgadmin
     command: "-extend.query-path=/queries.yaml"
     environment:
-      - DATA_SOURCE_NAME= "postgresql://postgres:postgres@172.19.0.2:5432/postgres"
+      - DATA_SOURCE_NAME=postgresql://postgres:postgres@localhost:49062/postgres
     volumes:
       - /home/jaber/monitor-ml/queries/queries.yaml:/queries.yaml
     
@@ -132,7 +132,7 @@ services:
       
   postgres-pgadmin:
     image: wnameless/postgresql-phppgadmin
-    container_name: postgres_pgadmin
+    container_name: postgres-pgadmin
     ports:
       - "49060:22"
       - "49061:80"
