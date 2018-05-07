@@ -24,7 +24,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/etc/prometheus/console_libraries'
       - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention=200h'
+      - '--storage.tsdb.retention=168h'
       - '--web.enable-lifecycle'
     restart: unless-stopped
     ports:
@@ -92,7 +92,7 @@ services:
     
   portainer:
     image: portainer/portainer
-    container_name: "portainer-app"
+    container_name: portainer-app
     command: --templates http://templates/templates.json 
     networks:
       - monitor-net
@@ -105,6 +105,7 @@ services:
   
   jupyter-notebook:
     image: jupyter/datascience-notebook
+    container_name: jupyter_notebook
     networks:
       - monitor-net
     restart: unless-stopped
@@ -131,6 +132,7 @@ services:
       
   postgres-pgadmin:
     image: wnameless/postgresql-phppgadmin
+    container_name: postgres_pgadmin
     ports:
       - "49060:22"
       - "49061:80"
