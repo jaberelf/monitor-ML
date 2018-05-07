@@ -69,7 +69,7 @@ services:
     environment:
       - DATA_SOURCE_NAME= "postgresql://postgres:postgres@172.19.0.2:5432/postgres"
     volumes:
-      - /path/to/queries.yaml:/queries.yaml
+      - /home/jaber/monitor-ml/queries/queries.yaml:/queries.yaml
     
     
 
