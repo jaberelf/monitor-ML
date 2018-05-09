@@ -2,11 +2,9 @@ import csv
 import requests
 import sys
 
-"""
-A simple program to print the result of a Prometheus query as CSV.
-"""
 
-li=['http://demo.robustperception.io:9090', 'irate(process_cpu_seconds_total[1m])']
+
+li=['http://localhost:9090', 'irate(process_cpu_seconds_total[1m])']
 
 response = requests.get('{0}/api/v1/query'.format(li[0]),
         params={'query': li[1]})
