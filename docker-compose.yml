@@ -54,22 +54,22 @@ services:
     labels:
         org.label-schema.group: "monitoring"
         
-  postgresexporter:
-    image: wrouesnel/postgres_exporter
-    container_name: postgresexporter
-    restart: unless-stopped
-    ports:
-      - "9200:9200"
-    restart: unless-stopped
-    networks:
-      - monitor-net
-    depends_on:
-      - postgres-pgadmin
-    command: "-extend.query-path=/queries.yaml"
-    environment:
-      - DATA_SOURCE_NAME=postgresql://postgres:postgres@localhost:49062/postgres
-    volumes:
-      - /home/jaber/monitor-ml/queries/queries.yml:/queries.yml
+  #postgresexporter:
+   # image: wrouesnel/postgres_exporter
+    #container_name: postgresexporter
+    #restart: unless-stopped
+    #ports:
+     # - "9200:9200"
+    #restart: unless-stopped
+    #networks:
+     # - monitor-net
+    #depends_on:
+     # - postgres-pgadmin
+    #command: "-extend.query-path=/queries.yaml"
+    #environment:
+     # - DATA_SOURCE_NAME=postgresql://postgres:postgres@localhost:49062/postgres
+    #volumes:
+     # - /home/jaber/monitor-ml/queries/queries.yml:/queries.yml
     
     
 
@@ -133,6 +133,7 @@ services:
   postgres-pgadmin:
     image: wnameless/postgresql-phppgadmin
     container_name: postgres-pgadmin
+    restart: unless-stopped
     ports:
       - "49060:22"
       - "49061:80"
